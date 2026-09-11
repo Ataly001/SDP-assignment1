@@ -13,7 +13,7 @@ public class DrinkDirector {
                 .build();
     }
 
-    public SweetDrink createPeachSweetTea(DrinkBuilder builder) {
+    public SweetDrink createLemonSweetTea(DrinkBuilder builder) {
         return builder
                 .setName("Lemon Sweet Tea")
                 .setFlavor("Lemon")
@@ -25,7 +25,7 @@ public class DrinkDirector {
                 .build();
     }
 
-    public SweetDrink createBerryEnergyDrink(DrinkBuilder builder) {
+    public SweetDrink createGorillaEnergyDrink(DrinkBuilder builder) {
         return builder
                 .setName("Gorilla Energy")
                 .setFlavor("Original")
