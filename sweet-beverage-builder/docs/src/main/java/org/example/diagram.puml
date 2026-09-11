@@ -1,0 +1,75 @@
+@startuml
+
+interface DrinkBuilder {
+    +setName(name: String): DrinkBuilder
+    +setFlavor(flavor: String): DrinkBuilder
+    +setSugarGrams(sugarGrams: int): DrinkBuilder
+    +setCarbonated(carbonated: boolean): DrinkBuilder
+    +setCaffeineMg(caffeineMg: int): DrinkBuilder
+    +setVolumeMl(volumeMl: int): DrinkBuilder
+    +setMainIngredient(mainIngredient: String): DrinkBuilder
+    +build(): SweetDrink
+}
+
+abstract class AbstractDrinkBuilder {
+    #name: String
+    #flavor: String
+    #sugarGrams: int
+    #carbonated: boolean
+    #caffeineMg: int
+    #volumeMl: int
+    #mainIngredient: String
+
+    +setName(name: String): DrinkBuilder
+    +setFlavor(flavor: String): DrinkBuilder
+    +setSugarGrams(sugarGrams: int): DrinkBuilder
+    +setCarbonated(carbonated: boolean): DrinkBuilder
+    +setCaffeineMg(caffeineMg: int): DrinkBuilder
+    +setVolumeMl(volumeMl: int): DrinkBuilder
+    +setMainIngredient(mainIngredient: String): DrinkBuilder
+    #createDrink(): SweetDrink
+}
+
+class ColaBuilder {
+    +build(): SweetDrink
+}
+
+class SweetTeaBuilder {
+    +build(): SweetDrink
+}
+
+class EnergyDrinkBuilder {
+    +build(): SweetDrink
+}
+
+class SweetDrink {
+    -name: String
+    -flavor: String
+    -sugarGrams: int
+    -carbonated: boolean
+    -caffeineMg: int
+    -volumeMl: int
+    -mainIngredient: String
+}
+
+class DrinkDirector {
+    +createClassicCola(builder: DrinkBuilder): SweetDrink
+    +createLemonSweetTea(builder: DrinkBuilder): SweetDrink
+    +createGorillaEnergyDrink(builder: DrinkBuilder): SweetDrink
+}
+
+class Main
+
+DrinkBuilder <|.. AbstractDrinkBuilder
+
+AbstractDrinkBuilder <|-- ColaBuilder
+AbstractDrinkBuilder <|-- SweetTeaBuilder
+AbstractDrinkBuilder <|-- EnergyDrinkBuilder
+
+AbstractDrinkBuilder ..> SweetDrink : creates
+
+DrinkDirector ..> DrinkBuilder : uses
+
+Main ..> DrinkDirector
+
+@enduml
